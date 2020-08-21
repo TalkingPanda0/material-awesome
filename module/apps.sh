@@ -7,4 +7,4 @@ kmix &
 picom &
 kdeconnect-indicator &
 xfce4-power-manager &
-
+variety &
