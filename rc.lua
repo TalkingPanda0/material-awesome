@@ -1,6 +1,6 @@
+local filesystem = require('gears.filesystem')
 local gears = require('gears')
 local awful = require('awful')
-local wibox = require("wibox")
 require('awful.autofocus')
 local beautiful = require('beautiful')
 
@@ -12,7 +12,6 @@ require('layout')
 
 -- Init all modules
 require('module.notifications')
-require('module.auto-start')
 require('module.decorate-client')
 -- Backdrop causes bugs on some gtk3 applications
 --require('module.backdrop')
@@ -60,14 +59,13 @@ _G.client.connect_signal(
 )
 
 -- Enable sloppy focus, so that focus follows mouse.
---[[
-_G.client.connect_signal(
+--[[_G.client.connect_signal(
   'mouse::enter',
   function(c)
     c:emit_signal('request::activate', 'mouse_enter', {raise = true})
   end
-)
---]]
+)--]]
+
 
 -- Make the focused window have a glowing border
 _G.client.connect_signal(
@@ -82,3 +80,20 @@ _G.client.connect_signal(
     c.border_color = beautiful.border_normal
   end
 )
+
+
+
+awesome.connect_signal(
+    'startup',
+    function(args)
+        awful.util.spawn('/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &')
+    end
+)
+awesome.connect_signal(
+    'startup',
+    function(args)
+        awful.util.spawn('bash -c "rm ~/.awesome-restart || ~/.config/awesome/module/apps.sh"')
+    end
+)
+
+
