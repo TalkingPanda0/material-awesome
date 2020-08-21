@@ -2,6 +2,8 @@ local naughty = require('naughty')
 local beautiful = require('beautiful')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
+naughty.config.icon_dirs = { "/usr/share/pixmaps", "/usr/share/icons/Papirus-Dark/48x48/status/", "/usr/share/icons/Papirus-Dark/48x48/devices/" }
+naughty.config.icon_formats = { "png", "gif", "svg" }
 
 -- Naughty presets
 naughty.config.padding = 8
