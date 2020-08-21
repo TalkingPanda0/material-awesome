@@ -18,6 +18,11 @@ local globalKeys =
   awful.key({altkey, 'Control'}, 'Down', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
   awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
   -- Default client focus
+    awful.key(
+    { modkey, "Control" },
+     "space",
+       awful.client.floating.toggle                     ,
+   {description = "toggle floating", group = "client"}),
   awful.key(
     {modkey},
     'd',
@@ -33,6 +38,22 @@ local globalKeys =
       awful.client.focus.byidx(-1)
     end,
     {description = 'focus previous by index', group = 'client'}
+  ),
+  awful.key(
+    {modkey ,"Control"},
+    'v',
+    function()
+       awful.spawn('/home/user/nmcli-rofi/nmcli-rofi')
+    end,
+    {description = 'show wifi menu', group = 'hotkeys'}
+  ),
+    awful.key(
+    {modkey},
+    'v',
+    function()
+       awful.spawn('rofi-vpn')
+    end,
+    {description = 'show vpn menu', group = 'hotkeys'}
   ),
   awful.key(
     {modkey},
@@ -93,16 +114,16 @@ local globalKeys =
     {description = 'Mark an area and screenshot it 10 seconds later (clipboard)', group = 'screenshots (clipboard)'}
   ),
   awful.key(
-    {modkey},
-    'p',
+    {},
+    'Print',
     function()
       awful.util.spawn_with_shell(apps.default.screenshot)
     end,
     {description = 'Take a screenshot of your active monitor and copy it to clipboard', group = 'screenshots (clipboard)'}
   ),
   awful.key(
-    {altkey, 'Shift'},
-    'p',
+    {'Control'},
+    'Print',
     function()
       awful.util.spawn_with_shell(apps.default.region_screenshot)
     end,
@@ -126,8 +147,7 @@ local globalKeys =
   ),
   -- Standard program
   awful.key(
-    {modkey},
-    'x',
+    {modkey,     }, "Return",
     function()
       awful.spawn(apps.default.terminal)
     end,
@@ -275,44 +295,28 @@ local globalKeys =
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
-  -- ALSA volume control
+  -- Pulseaudio volume control
   awful.key(
-    {},
-    'XF86AudioRaiseVolume',
+    {modkey},
+    'Prior',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%+')
+      awful.spawn('pactl set-sink-volume 0 +5%')
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
   awful.key(
-    {},
-    'XF86AudioLowerVolume',
+    {modkey},
+    'Next',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%-')
+      awful.spawn('pactl set-sink-volume 0 -5%')
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
   awful.key(
-    {},
-    'XF86AudioMute',
+    {modkey},
+    'End',
     function()
-      awful.spawn('amixer -D pulse set Master 1+ toggle')
-    end,
-    {description = 'toggle mute', group = 'hotkeys'}
-  ),
-  awful.key(
-    {},
-    'XF86AudioNext',
-    function()
-      --
-    end,
-    {description = 'toggle mute', group = 'hotkeys'}
-  ),
-  awful.key(
-    {},
-    'XF86PowerDown',
-    function()
-      --
+      awful.spawn('pactl set-sink-mute 0 toggle')
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
@@ -322,8 +326,41 @@ local globalKeys =
     function()
       _G.exit_screen_show()
     end,
-    {description = 'toggle mute', group = 'hotkeys'}
+    {description = 'shutdown settings', group = 'awesome'}
   ),
+  awful.key(
+    {modkey,"Shift"},
+    'Escape',
+    function()
+      _G.exit_screen_show()
+    end,
+    {description = 'shutdown settings', group = 'awesome'}
+  ),
+   awful.key(
+    {modkey},
+    'Home',
+    function()
+      awful.spawn('playerctl next')
+    end,
+    {description = 'next', group = 'hotkeys'}
+  ),
+   awful.key(
+    {modkey},
+    'Insert',
+    function()
+      awful.spawn('playerctl previous')
+    end,
+    {description = 'prev', group = 'hotkeys'}
+  ),
+   awful.key(
+    {modkey},
+    'Delete',
+    function()
+      awful.spawn('playerctl play-pause')
+    end,
+    {description = 'play/pause', group = 'hotkeys'}
+  ),
+  
   -- Screen management
   awful.key(
     {modkey},
@@ -355,7 +392,7 @@ local globalKeys =
       awful.util.spawn_with_shell('vm-attach attach')
     end
   ),
-  -- Lutris hotkey
+   -- Lutris hotkey
   awful.key(
     {modkey},
     'g',
@@ -363,20 +400,12 @@ local globalKeys =
       awful.util.spawn_with_shell('lutris')
     end
   ),
-  -- System Monitor hotkey
+  -- System Monitor hotkey - MATE version
   awful.key(
     {modkey},
     'm',
     function()
       awful.util.spawn_with_shell('mate-system-monitor')
-    end
-  ),
-  -- Kill VLC
-  awful.key(
-    {modkey},
-    'v',
-    function()
-      awful.util.spawn_with_shell('killall -9 vlc')
     end
   ),
   -- File Manager
@@ -386,16 +415,7 @@ local globalKeys =
     function()
       awful.util.spawn(apps.default.files)
     end,
-    {description = 'filebrowser', group = 'hotkeys'}
-  ),
-  -- Emoji Picker
-  awful.key(
-    {modkey},
-    'a',
-    function()
-      awful.util.spawn_with_shell('ibus emoji')
-    end,
-    {description = 'Open the ibus emoji picker to copy an emoji to your clipboard', group = 'hotkeys'}
+    {description = 'Default File Manager launch', group = 'hotkeys'}
   )
 )
 
@@ -470,5 +490,5 @@ for i = 1, 9 do
     )
   )
 end
-
+awful.spawn.with_shell('/home/user/fix.sh')
 return globalKeys
