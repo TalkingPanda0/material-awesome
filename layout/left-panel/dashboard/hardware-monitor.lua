@@ -14,5 +14,6 @@ return wibox.widget {
   require('widget.ram.ram-meter'),
   require('widget.temperature.temperature-meter'),
   require('widget.harddrive.harddrive-meter'),
+  --require('widget.wifi')
   layout = wibox.layout.fixed.vertical
 }

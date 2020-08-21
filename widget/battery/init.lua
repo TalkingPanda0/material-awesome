@@ -129,7 +129,7 @@ watch(
 
     local roundedCharge = math.floor(charge / 10) * 10
     if (roundedCharge == 0) then
-      batteryIconName = batteryIconName .. '-outline'
+      batteryIconName = batteryIconName .. '-100-'
     elseif (roundedCharge ~= 100) then
       batteryIconName = batteryIconName .. '-' .. roundedCharge
     end
