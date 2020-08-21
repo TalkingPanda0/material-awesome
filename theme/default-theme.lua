@@ -23,7 +23,7 @@ local awesome_overrides =
   theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
 
   theme.icons = theme.dir .. '/icons/'
-  theme.wallpaper = theme.dir .. '/wallpapers/DarkCyan.png'
+  theme.wallpaper = '/home/user/Pictures/Wallpapers/Arch.png'
   --theme.wallpaper = '#e0e0e0'
   theme.font = 'Roboto medium 10'
   theme.title_font = 'Roboto medium 14'
@@ -33,7 +33,7 @@ local awesome_overrides =
   theme.fg_focus = '#e4e4e4'
   theme.fg_urgent = '#CC9393'
   theme.bat_fg_critical = '#232323'
-
+  theme.bg_occupied = '#1A384A'	
   theme.bg_normal = theme.background.hue_800
   theme.bg_focus = '#5a5a5a'
   theme.bg_urgent = '#3F3F3F'
@@ -67,7 +67,7 @@ local awesome_overrides =
   -- Taglist
 
   theme.taglist_bg_empty = theme.background.hue_800
-  theme.taglist_bg_occupied = theme.background.hue_800
+  theme.taglist_bg_occupied = theme.background.hue_900 
   theme.taglist_bg_urgent =
     'linear:0,0:' ..
     dpi(48) ..
@@ -96,7 +96,8 @@ local awesome_overrides =
   theme.tasklist_fg_urgent = theme.fg_normal
   theme.tasklist_fg_normal = '#AAAAAA'
 
-  theme.icon_theme = 'Papirus-Dark'
+  theme.icon_theme = 
+  'Papirus-Dark'
 
   --Client
   theme.border_width = dpi(2)
