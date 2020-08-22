@@ -109,7 +109,7 @@ local globalKeys =
     {modkey},
     'Print',
     function()
-      awful.util.spawn_with_shell(apps.default.delayed_screenshot)
+      awful.util.spawn_with_shell('flameshot full -p ~/Pictures -d 5000')
     end,
     {description = 'Mark an area and screenshot it 10 seconds later (clipboard)', group = 'screenshots (clipboard)'}
   ),
@@ -117,17 +117,17 @@ local globalKeys =
     {},
     'Print',
     function()
-      awful.util.spawn_with_shell(apps.default.screenshot)
+      awful.util.spawn_with_shell('flameshot gui -p ~/Pictures')
     end,
-    {description = 'Take a screenshot of your active monitor and copy it to clipboard', group = 'screenshots (clipboard)'}
+    {description = 'Mark an area and screenshot it to your clipboard', group = 'screenshots (clipboard)'}
   ),
   awful.key(
     {'Control'},
     'Print',
     function()
-      awful.util.spawn_with_shell(apps.default.region_screenshot)
+      awful.util.spawn_with_shell('flameshot full -p ~/Pictures')
     end,
-    {description = 'Mark an area and screenshot it to your clipboard', group = 'screenshots (clipboard)'}
+    {description = 'Take a screenshot of your active monitor and copy it to clipboard', group = 'screenshots (clipboard)'}
   ),
   awful.key(
     {modkey},

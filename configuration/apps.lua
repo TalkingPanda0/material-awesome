@@ -10,10 +10,6 @@ return {
     rofi = rofi_command,
     lock = 'betterlockscreen -l',
     quake = 'termite',
-     screenshot = 'flameshot full -p ~/Pictures',
-    region_screenshot = 'flameshot gui -p ~/Pictures',
-    delayed_screenshot = 'flameshot full -p ~/Pictures -d 5000',
-    
     -- Editing these also edits the default program
     -- associated with each tag/workspace
     browser = 'firefox-nightly',
