@@ -12,7 +12,7 @@ return {
     quake = 'termite',
     -- Editing these also edits the default program
     -- associated with each tag/workspace
-    browser = 'firefox-nightly',
+    browser = 'brave',
     editor = 'code', -- gui text editor
     social = 'discord',
     game = 'lutris',
