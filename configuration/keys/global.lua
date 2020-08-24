@@ -405,7 +405,7 @@ local globalKeys =
     {modkey},
     'm',
     function()
-      awful.util.spawn_with_shell('mate-system-monitor')
+      awful.util.spawn_with_shell('ksysguard')
     end
   ),
   -- File Manager
