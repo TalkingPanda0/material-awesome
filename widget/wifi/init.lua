@@ -1,18 +1,6 @@
--------------------------------------------------
--- Battery Widget for Awesome Window Manager
--- Shows the battery status using the ACPI tool
--- More details could be found here:
--- https://github.com/streetturtle/awesome-wm-widgets/tree/master/battery-widget
-
--- @author Pavel Makhov
--- @copyright 2017 Pavel Makhov
--------------------------------------------------
-local filesystem = require('gears.filesystem')
 local awful = require('awful')
 local watch = require('awful.widget.watch')
 local wibox = require('wibox')
-local with_dpi = require('beautiful').xresources.apply_dpi
-local get_dpi = require('beautiful').xresources.get_dpi
 local clickable_container = require('widget.material.clickable-container')
 local gears = require('gears')
 local dpi = require('beautiful').xresources.apply_dpi
@@ -45,10 +33,10 @@ widget_button:buttons(
       1,
       nil,
       function()
-        awful.spawn('bash -c "/home/user/nmcli-rofi/nmcli-rofi"')
-      end
-    )
-  )
+        awful.spawn(HOME .. '/.config/awesome/module/nmcli-rofi/nmcli-rofi')
+	end
+)
+)
 )
 -- Alternative to naughty.notify - tooltip. You can compare both and choose the preferred one
 awful.tooltip(
