@@ -1,7 +1,13 @@
-#!/usr/bin/bash
-numlockx on 
-flameshot &
-pa-applet &
-picom &
-xfce4-power-manager &
-variety &
+#!/usr/bin/env bash
+numlockx on
+function run {
+  if ! pgrep -f $1 ;
+  then
+    $@&
+  fi
+}
+run flameshot &
+run pa-applet &
+run picom &
+run xfce4-power-manager &
+run variety &
