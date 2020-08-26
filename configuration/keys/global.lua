@@ -40,14 +40,6 @@ local globalKeys =
     {description = 'focus previous by index', group = 'client'}
   ),
   awful.key(
-    {modkey ,"Control"},
-    'v',
-    function()
-       awful.spawn('/home/user/nmcli-rofi/nmcli-rofi')
-    end,
-    {description = 'show wifi menu', group = 'hotkeys'}
-  ),
-    awful.key(
     {modkey},
     'v',
     function()
@@ -413,7 +405,7 @@ local globalKeys =
     {modkey},
     'e',
     function()
-      awful.util.spawn(apps.default.files)
+      awful.util.spawn('nemo')
     end,
     {description = 'Default File Manager launch', group = 'hotkeys'}
   )
