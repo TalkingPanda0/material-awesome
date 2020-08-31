@@ -292,7 +292,7 @@ local globalKeys =
     {modkey},
     'Prior',
     function()
-      awful.spawn('pactl set-sink-volume 0 +5%')
+      awful.spawn('amixer set Master -q 5%+')
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
@@ -300,7 +300,7 @@ local globalKeys =
     {modkey},
     'Next',
     function()
-      awful.spawn('pactl set-sink-volume 0 -5%')
+      awful.spawn('amixer set Master -q 5%-')
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
@@ -308,7 +308,7 @@ local globalKeys =
     {modkey},
     'End',
     function()
-      awful.spawn('pactl set-sink-mute 0 toggle')
+      awful.spawn('amixer -D pulse sset Master 1+ toggle')
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
