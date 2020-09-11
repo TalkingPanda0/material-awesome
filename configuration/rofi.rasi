@@ -16,7 +16,7 @@ configuration {
 	selbg:                       #3f51b5;
 	actbg:                       rgb(22, 37, 46);
 	urgbg:                       #e53935;
-	winbg:			             #3f51b5;
+	winbg:			             #d3d7cf;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
